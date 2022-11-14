@@ -1,4 +1,10 @@
 # Maven
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
 - task: CopyFiles@2
   inputs:
     Contents: '**'
@@ -8,15 +14,10 @@
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+    
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
-trigger:
-- master
-
-pool:
-  vmImage: ubuntu-latest
 
 steps:
 - task: Maven@3
